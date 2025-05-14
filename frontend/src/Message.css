@@ -1,0 +1,446 @@
+.messaging-container {
+    display: flex;
+    height: 100vh;
+    background: #f0f4ff; /* Fond clair */
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+  }
+  
+  .sidebar {
+    width: 220px;
+    background: #fff;
+    border-right: 1px solid #e0e0e0;
+    padding: 20px 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    transition: width 0.3s ease;
+  }
+  
+  .sidebar h2 {
+    font-size: 20px;
+    margin: 0 0 20px;
+    text-align: center;
+    color: #72C5FC; /* Bleu principal */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+  }
+  
+  .sidebar h2 span {
+    margin-left: 5px;
+  }
+  
+  .compose-btn {
+    width: 100%;
+    padding: 10px;
+    background: #72C5FC; /* Bleu principal */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    font-size: 14px;
+    transition: background 0.3s ease;
+  }
+  
+  .compose-btn:hover {
+    background: #5ea7d8; /* Bleu foncé */
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar li {
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #666; /* Texte secondaire */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  
+  .sidebar li:hover {
+    background: #e6f0fa;
+    color: #333; /* Texte principal */
+  }
+  
+  .sidebar li.active {
+    background: #72C5FC; /* Bleu principal */
+    color: white;
+    font-weight: 500;
+  }
+  
+  .sidebar li span {
+    background: #d93025;
+    color: white;
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-size: 12px;
+  }
+  
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .search-bar {
+    padding: 10px 20px;
+    background: #fff;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .search-bar input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #dadce0;
+    border-radius: 20px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  .search-bar input:focus {
+    border-color: #72C5FC; /* Bleu principal */
+  }
+  
+  .message-list {
+    width: 300px;
+    background: #fff;
+    border-right: 1px solid #e0e0e0;
+    overflow-y: auto;
+    transition: width 0.3s ease;
+  }
+  
+  .no-messages {
+    text-align: center;
+    color: #666; /* Texte secondaire */
+    padding: 20px;
+    font-style: italic;
+  }
+  
+  .message-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    border-bottom: 1px solid #f1f3f4;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .message-item:hover {
+    background: #f9f9f9;
+  }
+  
+  .message-item.unread {
+    font-weight: 500;
+  }
+  
+  .message-item .sender {
+    flex: 1;
+    color: #333; /* Texte principal */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px;
+  }
+  
+  .message-item .subject {
+    flex: 3;
+    color: #666; /* Texte secondaire */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14px;
+  }
+  
+  .message-item .timestamp {
+    color: #666; /* Texte secondaire */
+    min-width: 60px;
+    text-align: right;
+    font-size: 12px;
+  }
+  
+  .message-view {
+    flex: 1;
+    padding: 170px;
+    background: #fff;
+    overflow-y: auto;
+    transition: padding 0.3s ease;
+  }
+  
+  .message-detail h3 {
+    margin: 0 0 15px;
+    color: #333; /* Texte principal */
+    font-size: 24px;
+    font-weight: 500;
+  }
+  
+  .message-detail p {
+    margin: 5px 0;
+    color: #666; /* Texte secondaire */
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .message-detail button {
+    padding: 8px 16px;
+    background: #72C5FC; /* Bleu principal */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s ease;
+  }
+  
+  .message-detail button:hover {
+    background: #5ea7d8; /* Bleu foncé */
+  }
+  
+  .no-selection {
+    text-align: center;
+    color: #666; /* Texte secondaire */
+    padding: 40px;
+    font-size: 16px;
+  }
+  
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+  }
+  
+  .compose-modal {
+    width: 600px;
+    max-width: 90%;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    animation: slideUp 0.3s ease;
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background: #f5f5f5;
+    border-bottom: 1px solid #e0e0e0;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .modal-header h3 {
+    margin: 0;
+    font-size: 16px;
+    color: #333; /* Texte principal */
+    font-weight: 500;
+  }
+  
+  .modal-header .close-btn {
+    background: none;
+    border: none;
+    font-size: 16px; /* Taille réduite */
+    cursor: pointer;
+    color: #666; /* Texte secondaire */
+    padding: 5px;
+    transition: color 0.3s ease;
+  }
+  
+  .modal-header .close-btn:hover {
+    color: #333; /* Texte principal */
+  }
+  
+  .compose-modal form {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    flex: 1;
+  }
+  
+  .compose-modal input,
+  .compose-modal textarea {
+    padding: 10px;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+    margin-bottom: 10px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .compose-modal input:focus,
+  .compose-modal textarea:focus {
+    border-color: #72C5FC; /* Bleu principal */
+  }
+  
+  .compose-modal textarea {
+    flex: 1;
+    resize: vertical;
+    min-height: 200px;
+  }
+  
+  .compose-actions {
+    display: flex;
+    gap: 10px;
+    padding: 10px 15px;
+    border-top: 1px solid #e0e0e0;
+    background: #f5f5f5;
+    justify-content: flex-end;
+  }
+  
+  .compose-actions button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+  }
+  
+  .compose-actions button:nth-child(1) {
+    background: #72C5FC; /* Bleu principal */
+    color: white;
+  }
+  
+  .compose-actions button:nth-child(1):hover {
+    background: #5ea7d8; /* Bleu foncé */
+  }
+  
+  .compose-actions button:nth-child(2) {
+    background: #f1c40f;
+    color: white;
+  }
+  
+  .compose-actions button:nth-child(2):hover {
+    background: #d4a017;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+  
+  @media (max-width: 1024px) {
+    .message-list {
+      width: 250px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .messaging-container {
+      flex-direction: column;
+    }
+  
+    .sidebar {
+      width: 100%;
+      padding: 10px;
+      border-right: none;
+      border-bottom: 1px solid #e0e0e0;
+      box-shadow: none;
+    }
+  
+    .sidebar h2 {
+      font-size: 16px;
+    }
+  
+    .sidebar ul {
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+    }
+  
+    .sidebar li {
+      padding: 8px 12px;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+  
+    .compose-btn {
+      padding: 8px;
+      font-size: 12px;
+    }
+  
+    .main-content {
+      flex-direction: column;
+    }
+  
+    .search-bar {
+      padding: 10px;
+    }
+  
+    .message-list {
+      width: 100%;
+      border-right: none;
+      border-bottom: 1px solid #e0e0e0;
+    }
+  
+    .message-item {
+      padding: 10px;
+    }
+  
+    .message-item .sender {
+      flex: 1;
+      font-size: 12px;
+    }
+  
+    .message-item .subject {
+      flex: 2;
+      font-size: 12px;
+    }
+  
+    .message-item .timestamp {
+      min-width: 40px;
+      font-size: 12px;
+    }
+  
+    .message-view {
+      padding: 10px;
+    }
+  
+    .message-detail h3 {
+      font-size: 18px;
+    }
+  
+    .message-detail p {
+      font-size: 12px;
+    }
+  
+    .message-detail button {
+      padding: 6px 12px;
+      font-size: 12px;
+    }
+  
+    .no-selection p {
+      font-size: 12px;
+    }
+  
+    .compose-modal {
+      width: 100%;
+      height: 80vh;
+      margin: 0;
+      border-radius: 0;
+    }
+  }

@@ -1,0 +1,161 @@
+/* Page */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('C:\Users\kanoc\Desktop\3Si5\PA\projet_annuel\frontend\public\background.svg') no-repeat center center; 
+  /* background: #f0f4ff; */
+  background-size: cover;
+  font-family: Arial, sans-serif;
+}
+
+/* Conteneur */
+.page-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Logo */
+.logo {
+  width: 300px;
+  margin-bottom: -100px;
+}
+
+/* Formulaire */
+.login-container {
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 300px;
+  background: none;
+}
+
+input {
+  width: 92%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1.5px solid #080808;
+  border-radius: 5px;
+}
+
+button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px;
+  background: #72C5FC;
+  color: white;
+  border: 2px solid #72C5FC;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #5ea7d8;
+}
+
+a {
+  display: block;
+  margin-top: 10px;
+  color: gray;
+  font-size: 0.9em;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Popup */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  width: 300px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.4);
+}
+
+.popup input {
+  width:90%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 16px;
+}
+
+/* Confirmation */
+.confirmation-message {
+  font-size: 16px;
+  font-weight: bold;
+  color: #28a745;
+  margin-top: 10px;
+}
+
+/* Boutons */
+.popup-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.popup button {
+  flex: 1;
+  padding: 10px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.popup button:first-child {
+  background: gray;
+  color: white;
+}
+
+.popup button:last-child {
+  background: #72C5FC;
+  color: white;
+}
+
+.popup button:hover {
+  opacity: 0.8;
+}
+
+/* Loader */
+.loader {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid #fff;
+  border-top: 3px solid #72C5FC;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

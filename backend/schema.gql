@@ -1,0 +1,331 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+interface Node {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type AuditLog {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  user: User!
+  actionType: String!
+  targetObject: String!
+  ipAddress: String!
+}
+
+type MfaKey {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  user: User!
+  mfaType: String!
+  mfaKey: String!
+  status: String!
+}
+
+type Notification {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  type: String!
+  content: String!
+  status: String!
+  user: User!
+}
+
+type PasswordResetHistory {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  resetToken: String!
+  expiresAt: DateTime!
+  status: String!
+  user: User!
+}
+
+type Permission {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  permissionName: String!
+  description: String!
+}
+
+type RolePermissions {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  role: Role!
+  permission: Permission!
+}
+
+type Role {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  roleName: String!
+  description: String!
+}
+
+type UserRole {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  user: User!
+  role: Role!
+  assignedAt: DateTime!
+}
+
+type User {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  firstName: String!
+  lastName: String!
+  email: String!
+  status: String!
+  lastLogin: DateTime!
+  avatar: String
+}
+
+type Message {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  title: String!
+  description: String!
+  image: String!
+  receiverId: String!
+  author: User!
+}
+
+type MessageCreateOutput {
+  message: Message!
+}
+
+type MessageUpdateOutput {
+  message: Message!
+}
+
+type MessageDeleteOutput {
+  messageId: ID!
+}
+
+type MessagePagination {
+  totalCount: Float!
+  nodes: [Message!]!
+}
+
+type UserCreateOutput {
+  user: User!
+}
+
+type AuthLoginOutput {
+  accessToken: String!
+}
+
+type PermissionCreateOutput {
+  permission: Permission!
+}
+
+type PermissionUpdateOutput {
+  permission: Permission!
+}
+
+type UserRoleCreateOutput {
+  userRole: UserRole!
+}
+
+type UserRoleUpdateOutput {
+  userRole: UserRole!
+}
+
+type RolePermissionsCreateOutput {
+  rolePermissions: RolePermissions!
+}
+
+type AuditLogCreateOutput {
+  auditLog: AuditLog!
+}
+
+type MfaKeyCreateOutput {
+  mfaKey: MfaKey!
+}
+
+type SecurityPolicies {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  policyName: String!
+  description: String!
+}
+
+type SecurityPoliciesCreateOutput {
+  securityPolicies: SecurityPolicies!
+}
+
+type PasswordResetHistoryCreateOutput {
+  passwordResetHistory: PasswordResetHistory!
+}
+
+type NotificationsCreateOutput {
+  notifications: Notification!
+}
+
+type ApiKey {
+  id: ID!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  apiKey: String!
+  status: String!
+  expiresAt: DateTime!
+}
+
+type ApiKeyCreateOutput {
+  apiKey: ApiKey!
+}
+
+type ApiKeyUpdateOutput {
+  apiKey: ApiKey!
+}
+
+type Query {
+  sayHello: String!
+  messagePagination(skip: Int!, take: Int!, sortBy: MessagePaginationSortBy): MessagePagination!
+}
+
+input MessagePaginationSortBy {
+  createdAt: SortDirection
+  title: String
+}
+
+enum SortDirection {
+  ASC
+  DESC
+}
+
+type Mutation {
+  messageCreate(input: MessageCreateInput!): MessageCreateOutput!
+  messageUpdate(messageId: ID!, input: MessageUpdateInput!): MessageUpdateOutput!
+  messageDelete(messageId: ID!): MessageDeleteOutput!
+  userCreate(input: UserCreateInput!): UserCreateOutput!
+  authLogin(username: String!, password: String!): AuthLoginOutput!
+  permissionsCreate(input: PermissionCreateInput!): PermissionCreateOutput!
+  permissionUpdate(permissionId: ID!, input: PermissionUpdateInput!): PermissionUpdateOutput!
+  userRoleCreate(input: UserRoleCreateInput!): UserRoleCreateOutput!
+  userRoleUpdate(userRoleId: ID!, input: UserRoleUpdateInput!): UserRoleUpdateOutput!
+  rolePermissionsCreate(input: RolePermissionsCreateInput!): RolePermissionsCreateOutput!
+  auditLogCreate(input: AuditLogCreateInput!): AuditLogCreateOutput!
+  mfaKeyCreate(input: MfaKeyCreateInput!): MfaKeyCreateOutput!
+  securityPoliciesCreate(input: SecurityPoliciesCreateInput!): SecurityPoliciesCreateOutput!
+  createPasswordResetHistory(input: PasswordResetHistoryCreateInput!): PasswordResetHistoryCreateOutput!
+  notificationCreate(input: NotificationsCreateInput!): NotificationsCreateOutput!
+  apiKeyCreate(input: ApiKeyCreateInput!): ApiKeyCreateOutput!
+  apiKeyUpdate(apiKeyId: ID!, input: ApiKeyUpdateInput!): ApiKeyUpdateOutput!
+}
+
+input MessageCreateInput {
+  title: String!
+  description: String!
+  image: String!
+  receiverId: String!
+}
+
+input MessageUpdateInput {
+  title: String!
+  description: String!
+  image: String!
+  receiverId: String!
+}
+
+input UserCreateInput {
+  firstName: String!
+  lastName: String!
+  email: String!
+  password: String!
+  status: String!
+  lastLogin: DateTime
+  avatar: String
+}
+
+input PermissionCreateInput {
+  permissionName: String!
+  description: String!
+}
+
+input PermissionUpdateInput {
+  permissionName: String!
+  description: String!
+}
+
+input UserRoleCreateInput {
+  userId: String!
+  roleId: String!
+  assignedAt: DateTime!
+}
+
+input UserRoleUpdateInput {
+  userId: String!
+  roleId: String!
+  assignedAt: DateTime!
+}
+
+input RolePermissionsCreateInput {
+  roleId: String!
+  permissionId: String!
+}
+
+input AuditLogCreateInput {
+  actionType: String!
+  targetObject: String!
+  ipAddress: String!
+  userId: String!
+}
+
+input MfaKeyCreateInput {
+  mfaType: String!
+  mfaKey: String!
+  status: String!
+  userId: String!
+}
+
+input SecurityPoliciesCreateInput {
+  policy_name: String!
+  description: String!
+}
+
+input PasswordResetHistoryCreateInput {
+  resetToken: String!
+  expiresAt: DateTime!
+  status: String!
+  userId: String!
+}
+
+input NotificationsCreateInput {
+  type: String!
+  content: String!
+  status: String!
+  userId: String!
+}
+
+input ApiKeyCreateInput {
+  apiKey: String!
+  status: String!
+  expiresAt: DateTime!
+}
+
+input ApiKeyUpdateInput {
+  apiKey: String!
+  status: String!
+  expiresAt: DateTime!
+}

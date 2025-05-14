@@ -1,0 +1,22 @@
+
+services:
+  postgres-db:
+    image: postgres:17
+    environment:
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}   # Utilisez votre variable d'environnement
+      POSTGRES_USER: ${DATABASE_USER}           # Utilisez votre variable d'environnement
+      POSTGRES_DB: ${DATABASE_NAME}             # Utilisez votre variable d'environnement
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - backend
+    ports:
+      - "5432:5432"
+
+
+networks:
+  backend:
+    driver: bridge
+
+volumes:
+  postgres-data:
